@@ -17,6 +17,14 @@ body {
     position: relative;
 }
 
+.small-tick {
+    height: 0.2rem;
+    width: 10%;
+    background: black;
+    margin: 2px;
+    position: aboslute;
+}
+
 .hand {
     height: 0.3rem;
     width: 50%;
@@ -24,7 +32,9 @@ body {
     position: absolute;
     top: 50%;
     transform-origin: 100%;
-    transform: rotate(90deg)
+    transform: rotate(90deg);
+    transition: all 0.05s;
+    transition-timing-function: cubic-bezier(0, 2.55, 0.58, 1);
 }
 
 .seconds {

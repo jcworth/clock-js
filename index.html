@@ -14,5 +14,17 @@
             <div class="hand hours"></div>
         </div>
     </div>
+<script>
+    function date() {
+        const now = new Date();
+        const seconds = now.getSeconds();
+        const degrees = ((seconds / 60) * 360) + 90;
+        console.log(degrees);
+        document.querySelector('.seconds').style.transform = `rotate(${degrees}deg)`
+    }
+
+    setInterval(date, 1000);
+
+</script>
 </body>
 </html>
