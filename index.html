@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Clock-js</title>
+</head>
+<body>
+    <div class="container">
+        <!-- <h1>hi</h1> -->
+        <div class="clock-face">
+            <div class="hand seconds"></div>
+            <div class="hand minutes"></div>
+            <div class="hand hours"></div>
+        </div>
+    </div>
+<script>
+
+    const secondHand = document.querySelector('.seconds');
+    const minuteHand = document.querySelector('.minutes');
+    const hourHand = document.querySelector('.hours');
+    const hands = document.querySelectorAll('.hand');
+
+    function date() {
+        const now = new Date();
+        const seconds = now.getSeconds();
+        const minutes = now.getMinutes();
+        const hours = now.getHours();
+
+        const secondsDegrees = ((seconds / 60) * 360) + 90;
+        const minutesDegrees = (( minutes / 60 ) * 360) + 90;
+        const hoursDegrees = ((hours / 12 ) * 360) + 90;
+
+        secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+        minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
+        hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+        
+        console.log(secondsDegrees, hands)
+
+        if (secondsDegrees === 90) {
+            hands.forEach(hand => hand.style.transition = 'none')
+        } else {
+            hands.forEach(hand => hand.style.transition = 'all 0.05s')
+        }
+    }
+
+    setInterval(date, 1000);
+
+</script>
+</body>
+</html>
