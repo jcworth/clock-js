@@ -18,9 +18,15 @@
     function date() {
         const now = new Date();
         const seconds = now.getSeconds();
-        const degrees = ((seconds / 60) * 360) + 90;
-        console.log(degrees);
-        document.querySelector('.seconds').style.transform = `rotate(${degrees}deg)`
+        const minutes = now.getMinutes();
+        const hours = now.getHours();
+        const secondsDegrees = ((seconds / 60) * 360) + 90;
+        const minutesDegrees = (( minutes / 60 ) * 360) + 90;
+        const hoursDegrees = ((hours / 12 ) * 360) + 90;
+        console.log(hoursDegrees);
+        document.querySelector('.seconds').style.transform = `rotate(${secondsDegrees}deg)`;
+        document.querySelector('.minutes').style.transform = `rotate(${minutesDegrees}deg)`;
+        document.querySelector('.hours').style.transform = `rotate(${hoursDegrees}deg)`;
     }
 
     setInterval(date, 1000);
