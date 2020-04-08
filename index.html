@@ -15,18 +15,33 @@
         </div>
     </div>
 <script>
+
+    const secondHand = document.querySelector('.seconds');
+    const minuteHand = document.querySelector('.minutes');
+    const hourHand = document.querySelector('.hours');
+    const hands = document.querySelectorAll('.hand');
+
     function date() {
         const now = new Date();
         const seconds = now.getSeconds();
         const minutes = now.getMinutes();
         const hours = now.getHours();
+
         const secondsDegrees = ((seconds / 60) * 360) + 90;
         const minutesDegrees = (( minutes / 60 ) * 360) + 90;
         const hoursDegrees = ((hours / 12 ) * 360) + 90;
-        console.log(hoursDegrees);
-        document.querySelector('.seconds').style.transform = `rotate(${secondsDegrees}deg)`;
-        document.querySelector('.minutes').style.transform = `rotate(${minutesDegrees}deg)`;
-        document.querySelector('.hours').style.transform = `rotate(${hoursDegrees}deg)`;
+
+        secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+        minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
+        hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+        
+        console.log(secondsDegrees, hands)
+
+        if (secondsDegrees === 90) {
+            hands.forEach(hand => hand.style.transition = 'none')
+        } else {
+            hands.forEach(hand => hand.style.transition = 'all 0.05s')
+        }
     }
 
     setInterval(date, 1000);
